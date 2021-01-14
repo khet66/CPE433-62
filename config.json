@@ -22,8 +22,8 @@
             "Postprocessing" :"false" 
         },
         {
-            "Path" : "inf",
-            "Class" : "DNWS.CINFPlugin",
+            "Path" : "clientinfo",
+            "Class" : "DNWS.clientinfoPlugin",
             "Preprocessing" : "true",
             "Postprocessing" :"false"  
         }

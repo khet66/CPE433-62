@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace DNWS
 {
-  class CINFPlugin : IPlugin
+  class clientinfoPlugin : IPlugin
   {
-    public CINFPlugin()
+    public clientinfoPlugin()
     {
     }
 
