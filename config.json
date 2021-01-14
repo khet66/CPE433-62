@@ -20,6 +20,12 @@
             "Class" : "DNWS.DelayPlugin",
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
+        },
+        {
+            "Path" : "inf",
+            "Class" : "DNWS.CINFPlugin",
+            "Preprocessing" : "true",
+            "Postprocessing" :"false"  
         }
     ]
 }

@@ -280,12 +280,12 @@ namespace DNWS
         /// </summary>
         public void Start()
         {
-            _port = Convert.ToInt32(Program.Configuration["Port"]);
+            _port = Convert.ToInt32(Program.Configuration["Port"]); 
             IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, _port);
             // Create listening socket, queue size is 5 now.
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             serverSocket.Bind(localEndPoint);
-            serverSocket.Listen(5);
+            serverSocket.Listen(5); 
             _parent.Log("Server started at port " + _port + ".");
             while (true)
             {

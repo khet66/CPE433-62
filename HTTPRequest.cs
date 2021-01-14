@@ -42,6 +42,7 @@ namespace DNWS
     {
       get {return _method;}
     }
+
     public HTTPRequest(String request)
     {
       _propertyListDictionary = new Dictionary<String, String>();
