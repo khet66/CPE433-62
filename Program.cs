@@ -280,29 +280,28 @@ namespace DNWS
         /// </summary>
         public void Start()
         {
-            _port = Convert.ToInt32(Program.Configuration["Port"]); 
-            IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, _port);
-            // Create listening socket, queue size is 5 now.
-            serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            serverSocket.Bind(localEndPoint);
-            serverSocket.Listen(5); 
-            _parent.Log("Server started at port " + _port + ".");
-            while (true)
-            {
                 try
                 {
-                    // Wait for client
-                    clientSocket = serverSocket.Accept();
-                    // Get one, show some info
-                    _parent.Log("Client accepted:" + clientSocket.RemoteEndPoint.ToString());
-                    HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
-                    hp.Process();
+                    _port = Convert.ToInt32(Program.Configuration["Port"]); 
+                    IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, _port);
+                    // Create listening socket, queue size is 5 now.
+                    serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    serverSocket.Bind(localEndPoint);
+                    serverSocket.Listen(5); 
+                    _parent.Log("Server started at port " + _port + ".");
+                    while (true)
+                    {
+                        clientSocket = serverSocket.Accept();
+                        HTTPProcessor hp = new HTTPProcessor(clientSocket, _parent);
+                        Thread t = new Thread(new ThreadStart(hp.Process));
+                        t.Start();
+                    }
                 }
                 catch (Exception ex)
                 {
                     _parent.Log("Server starting error: " + ex.Message + "\n" + ex.StackTrace);
                 }
-            }
+            //}
         }
     }
 }
